@@ -2,12 +2,11 @@ require './kategori'
 require './sorucesitleri/bosluk'
 require './sorucesitleri/dy'
 require './sorucesitleri/test'
-class Soru
-	def initialize()
-		@@secililer ||= {dy: [], test: [], bosluk: []}
-	end
 
-	def getir(kategori)
+class Soru
+	@@secililer ||= {dy: [], test: [], bosluk: []}
+
+	def self.getir(kategori)
 		turler = [:bosluk, :dy, :test]
 		
 		rastgele=rand(0..2)
@@ -15,7 +14,7 @@ class Soru
 		@tur = turler[rastgele]
 		@tum = []
 
-		yol = Kategori.sec(kategori) + '/' + @tur.to_s
+		yol = 'sorular/' + Kategori.sec(kategori) + '/' + @tur.to_s
 		File.open(yol) do |dosya|
 			dosya.each { |satir| @tum << satir.chomp }
 		end
@@ -25,7 +24,7 @@ class Soru
 	end
 
 	private
-	def sec
+	def self.sec
 		rastgele = rand(0...@tum.size)
 		
 		while @@secililer[@tur].include? rastgele
@@ -37,7 +36,7 @@ class Soru
 		@tum[rastgele]
 	end
 
-	def soru_cesit
+	def self.soru_cesit
 		if @tur == :bosluk
 			SoruCesitleri::Bosluk.new (sec())
 		elsif @tur == :dy
@@ -47,6 +46,3 @@ class Soru
 		end
 	end
 end
-
-soru = Soru.new
-soru.getir(1)

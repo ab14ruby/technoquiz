@@ -1,4 +1,4 @@
-require './cesitler'
+require './sorucesitleri/cesitler'
 
 module SoruCesitleri
 
@@ -8,17 +8,18 @@ module SoruCesitleri
 
 		attr_reader :sure, :puan
 
-		def initialize(satir)
-			v = Hash[satir.split('||').map{ |veri| veri.split('=>')}]
+		def initialize(satir = '')
+			@satir = satir
+		end
+
+		def yazdir()
+			v = Hash[@satir.split('||').map{ |veri| veri.split('=>')}]
 
 			@soru = kurtar v["Soru"]
 			@cevap = kurtar v["Cevap"]
 			@puan = kurtar v["Puan"]
 			@sure = kurtar v["Sure"]
-		end
 
-
-		def yazdir()
 		 	puts @soru + " (D/Y)"
 		end
 
@@ -41,9 +42,10 @@ module SoruCesitleri
 		 	puts 'Puan giriniz'
 		 	puan = hazirla gets.chomp
 
-		 	File.open('../sorular/' + kategori + '/dy', 'a') do |dosya|
+		 	File.open('sorular/' + kategori + '/dy', 'a') do |dosya|
 				dosya.puts(veriler({'Soru' => soru, 'Cevap' => cevap, "Sure"=>sure, "Puan"=>puan}))
 			end
+		end
 
 	end
 

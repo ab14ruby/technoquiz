@@ -19,10 +19,13 @@ class Puan
     puanlar.sort.reverse
   end
 
+  def al
+    puts 'Aldığınız puan: ' + @durum.to_s
+  end
 
-  def yazdir(kullanıcı = "Anonymous")
+  def yazdir(kullanici = "Anonymous")
     File.open("puanlar","a") do |dosya|
-      dosya.puts "#{@durum} -> #{kullanıcı}"
+      dosya.puts @durum.to_s + ' -> ' + kullanici
     end
   end
 

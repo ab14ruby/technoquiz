@@ -1,5 +1,5 @@
 class Kategori
-	def kategoriler
+	def self.liste
 		i = 1
 		kat().each do |k|
 			puts i.to_s + ') ' + k.to_s
@@ -16,13 +16,10 @@ class Kategori
 
 	def self.kat 
 		kategori=[]
-		Dir.glob("sorular/*") do |k|
-			kategori << k.to_s
+		Dir.foreach("sorular") do |k|
+			kategori << k.to_s unless k == '.' || k == '..'
 		end
 		kategori.sort
 	end
 
-	def kat
-		Kategori.kat
-	end
 end

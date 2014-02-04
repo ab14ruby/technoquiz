@@ -1,4 +1,4 @@
-require './cesitler'
+require './sorucesitleri/cesitler'
 
 module SoruCesitleri
 
@@ -8,8 +8,12 @@ module SoruCesitleri
 
 		attr_reader :sure, :puan
 
-		def yazdir(satir)
-			v = Hash[satir.split('||').map{ |degisken| degisken.split('=>') }]
+		def initialize(satir = '')
+			@satir = satir
+		end
+
+		def yazdir()
+			v = Hash[@satir.split('||').map{ |degisken| degisken.split('=>') }]
 
 			@soru = kurtar v["Soru"]
 			@cevap = kurtar v["Cevap"]
@@ -55,17 +59,9 @@ module SoruCesitleri
 
 
 
-	 		File.open('../sorular/' + kategori + '/test', 'a') do |dosya|
+	 		File.open('sorular/' + kategori + '/test', 'a') do |dosya|
 				dosya.puts(veriler({'Soru' => soru, 'Cevap' => cevap, 'A' => a, 'B' => b, 'C' => c, 'D' => d, "Sure"=>sure, "Puan"=>puan}))
 			end
 		end
     end
 end
-
-t = SoruCesitleri::Test.new()
-
-t.yazdir('Soru=>"Aşağıdakilerden hangisi anakart üzerinde yer almaz?"||A=>"Mikroişlemci"||B=>"BIOS"||C=>"Bellek"||D=>""||Cevap=>A||Sure=>10||Puan=>1000')
-
-t.kontrol
-
-t.ekleme('Donanim')
