@@ -5,8 +5,7 @@ module SoruCesitleri
 		attr_reader :sure, :puan
 		
 		def initialize(satir)
-			v=[]
-			v << Hash[satir.split('||').map{ |veri| veri.split('=>')}]
+			v = Hash[satir.split('||').map{ |veri| veri.split('=>') }]
 
 			@soru = v["Soru"]
 			@cevap = v["Cevap"]

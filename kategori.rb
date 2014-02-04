@@ -1,8 +1,4 @@
 class Kategori
-	def initialize
-		Dir.chdir("./sorular")
-	end
-
 	def kategoriler
 		i = 1
 		kat().each do |k|
@@ -11,18 +7,22 @@ class Kategori
 		end
 	end
 
-	def sec(secim)
+	def self.sec(secim)
 		secim -= 1
 		kat()[secim]
 	end
 
 	private
 
-	def kat
+	def self.kat 
 		kategori=[]
-		Dir.glob("*") do |k|
+		Dir.glob("sorular/*") do |k|
 			kategori << k.to_s
 		end
 		kategori.sort
+	end
+
+	def kat
+		Kategori.kat
 	end
 end

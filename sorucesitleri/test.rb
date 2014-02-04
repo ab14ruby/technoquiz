@@ -2,11 +2,10 @@ module SoruCesitleri
 
 	class Test
 
-		attr_reader :sure, :puan,
+		attr_reader :sure, :puan
 
 		def initialize(satir)
-			v = []
-			v << HASH[satir.split('||').map{ |degisken| degisken.split('=>')}]
+			v = Hash[satir.split('||').map{ |degisken| degisken.split('=>') }]
 
 			@soru = v["Soru"]
 			@cevap = v["Cevap"]
