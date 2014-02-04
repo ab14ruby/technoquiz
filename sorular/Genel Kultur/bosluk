@@ -1,0 +1,5 @@
+Soru=>"--- compiler fikrini ilk ortaya atan kişidir."||Cevap=>"Grace Hopper"||Sure=>100||Puan=>1000
+Soru=>"Bugünkü anlamda ilk bilgisayar olan --- 1995'te yapıldı."||Cevap=>"ENIAC"||Sure=>100||Puan=>1000
+Soru=>"Kişisel bilgisayar ilk kez 1981 yılında --- firması tarafından yapıldı."||Cevap=>"IBM"||Sure=>100||Puan=>1000
+Soru=>"Bilgisayar ile çevre birimleri arasındaki gerekli iletişimin sağlanabilmesi için veri alışverişinden önce yapılan hazırlık işaretleşmesine --- denir."||Cevap=>"hand shaking"||Sure=>100||Puan=>1000
+Soru=>S"Her bilgisayarın diğer bilgisayarlarla iletişim kurabilmesi için her bilgisayardaki ethernet kartına atanan ayırıcı numaraya --- denir."||Cevap=>"IP"||Sure=>100||Puan=>1000
